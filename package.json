@@ -1,0 +1,18 @@
+{
+  "name": "demo-frontend",
+  "version": "1.0.0",
+  "description": "E-commerce frontend with Next.js",
+  "dependencies": {
+    "react": "^18.2.0",
+    "next": "^14.0.0",
+    "axios": "^1.6.0",
+    "zustand": "^4.4.0",
+    "@tanstack/react-query": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "eslint": "^8.50.0"
+  }
+}
