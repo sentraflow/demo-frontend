@@ -1,11 +1,7 @@
-// User Types
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  role: 'USER' | 'ADMIN';
-  createdAt: string;
-}
+// Import shared types from common package
+export { User, Product, Order, PaginatedResponse } from '@sentraflow-demo/shared-types';
+
+// User Types - extend/augment if needed
 
 export interface RegisterRequest {
   name: string;
@@ -23,20 +19,7 @@ export interface AuthResponse {
   user: User;
 }
 
-// Product Types
-export interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  stockQuantity: number;
-  imageUrl?: string;
-  available: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
+// Product Types - request types
 export interface CreateProductRequest {
   name: string;
   description: string;
@@ -51,44 +34,13 @@ export interface UpdateProductRequest extends Partial<CreateProductRequest> {
 }
 
 // Cart Types
-export interface CartItem {
-  id: number;
-  userId: number;
-  productId: number;
-  quantity: number;
-  product: Product;
-  createdAt: string;
-}
-
 export interface AddToCartRequest {
   productId: number;
   quantity: number;
 }
 
-// Order Types
-export type OrderStatus = 'PENDING' | 'PROCESSING' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
-export type PaymentStatus = 'PENDING' | 'COMPLETED' | 'FAILED' | 'REFUNDED';
-
-export interface OrderItem {
-  id: number;
-  orderId: number;
-  productId: number;
-  quantity: number;
-  price: number;
-  product: Product;
-}
-
-export interface Order {
-  id: number;
-  userId: number;
-  orderStatus: OrderStatus;
-  paymentStatus: PaymentStatus;
-  totalAmount: number;
-  shippingAddress: string;
-  orderItems: OrderItem[];
-  createdAt: string;
-  updatedAt: string;
-}
+// Order Types - re-export enums and request types
+export type { OrderStatus, PaymentStatus, OrderItem, CartItem } from '@sentraflow-demo/shared-types';
 
 export interface CreateOrderRequest {
   shippingAddress: string;
@@ -102,11 +54,4 @@ export interface CreateOrderRequest {
 export interface ApiError {
   message: string;
   status: number;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  total: number;
-  page: number;
-  pageSize: number;
 }
